@@ -1,0 +1,20 @@
+Target User: RPI Students
+
+Public Menu: School -> Dept -> Course -> Section
+  Course: BackTest, Syllabus/Material, Calender(Exams)
+  Section:Calender(Quizzes)
+  
+  
+User Menu: Course List, Private Calender(All courses)
+
+
+Future plan: Course Discussion Board
+
+
+
+Risks:
+  1. User may update incorrect material.
+  
+  2. User verification
+       
+       
