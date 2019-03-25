@@ -45,6 +45,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            // if user click on login
+            // check the user name and password first
             case R.id.bt_login:
                 String name = etName.getText().toString();
                 String password = etPwd.getText().toString();
@@ -56,6 +58,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Toast.makeText(context, "Please enter your password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // compare the info in data base and return the login result
                 BmobUser bu2 = new BmobUser();
                 bu2.setUsername(name);
                 bu2.setPassword(password);
@@ -74,7 +77,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
                 });
                 break;
+            // if user clicks the register button
             case R.id.tv_register:
+
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
                 break;
         }

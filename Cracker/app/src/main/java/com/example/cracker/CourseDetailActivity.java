@@ -87,13 +87,13 @@ public class CourseDetailActivity extends BaseActivity {
         User user = BmobUser.getCurrentUser(User.class);
         if (user != null) {
             if (iscoll(data.getObjectId())) {
-                mTvRight.setText("cancel");
+                mTvRight.setText("Cancel");
             } else {
-                mTvRight.setText("Collection");
+                mTvRight.setText("Fav");
             }
         }
     }
-
+    // get all the course material
     private void getDataList() {
         BmobQuery<Data> query = new BmobQuery<>();
         query.order("-createdAt");
@@ -120,6 +120,7 @@ public class CourseDetailActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_right:
+                // Add course to favorite list
                 User person = BmobUser.getCurrentUser(User.class);
                 if (person == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -155,7 +156,6 @@ public class CourseDetailActivity extends BaseActivity {
                             }
                         }
                         if (flag) {
-                            //取消收藏
                             cancel();
                         } else {
                             person.setColl(str + ",,," + data.getObjectId());
@@ -175,6 +175,8 @@ public class CourseDetailActivity extends BaseActivity {
                 }
                 break;
             case R.id.fab_edit:
+                // upload course matrial
+                // if user did not login, will remind user to login first
                 User person2 = BmobUser.getCurrentUser(User.class);
                 if (person2 == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -193,7 +195,7 @@ public class CourseDetailActivity extends BaseActivity {
                 break;
         }
     }
-
+    // remove the course from fav list
     private void cancel() {
         User person = BmobUser.getCurrentUser(User.class);
         String str = person.getColl();
@@ -209,15 +211,15 @@ public class CourseDetailActivity extends BaseActivity {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-                    onToast("Cancel success");
-                    mTvRight.setText("Collection");
+                    onToast("Cancel successfully");
+                    mTvRight.setText("Fav");
                 } else {
                     onToast("failed:" + e.getMessage());
                 }
             }
         });
     }
-
+    // check if the course is in favorite list
     private boolean iscoll(String id) {
         boolean flag = false;
         User person = BmobUser.getCurrentUser(User.class);

@@ -37,10 +37,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mBtnREgister.setOnClickListener(this);
     }
 
-
+    // if user click submit
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            // check the user name and password
             case R.id.id_btn_register:
                 String name = etName.getText().toString().trim();
                 String pwd = etPwd.getText().toString().trim();
@@ -53,7 +54,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     onToast("password can not be empty");
                     return;
                 }
-
+                // if username and pwd are valid, record the user info in database
                 User user = new User();
                 user.setUsername(name);
                 user.setPassword(pwd);

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.cracker.fragment.HomeFragment;
 import com.example.cracker.fragment.SettingFragment;
 
-
+// MainActivity controls action in main view
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         IMAGE[0].setSelected(true);
         TAB[0].setOnClickListener(this);
         TAB[1].setOnClickListener(this);
-        // 添加显示第一个fragment
+        // add fragments
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, homeFragment, "home")
                 .add(R.id.fragment_container, settingFragment, "set")
@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 .show(homeFragment).commit();
     }
 
-
+    // if user clicks on the tab to change the page (course or setting)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -93,6 +93,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
     private long exitTime = 0;
 
+    // if user clicks backward
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){

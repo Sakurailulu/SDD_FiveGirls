@@ -29,7 +29,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
-
+// upload new course material
 public class ReleaseActivity extends BaseActivity {
     private EditText et_title;
     private TextView et_content;
@@ -54,7 +54,7 @@ public class ReleaseActivity extends BaseActivity {
         et_title = findViewById(R.id.et_title);
         et_content = findViewById(R.id.et_content);
         iv_img = findViewById(R.id.iv_img);
-
+        // if user click on upload image, will bring up a reminder window
         iv_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,9 +75,11 @@ public class ReleaseActivity extends BaseActivity {
             }
         });
         Button send = findViewById(R.id.send);
+        // if user submit the material
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // check if all contents are valid
                 String title = et_title.getText().toString();
                 String content = et_content.getText().toString();
                 if (TextUtils.isEmpty(title)||TextUtils.isEmpty(content)){
@@ -94,7 +96,7 @@ public class ReleaseActivity extends BaseActivity {
         });
 
     }
-
+    // upload the file to the database
     private void upLoad(String title, String content) {
         Data trend =  new Data();
         trend.setTitle(title);
@@ -120,6 +122,8 @@ public class ReleaseActivity extends BaseActivity {
         intent.putExtra("return-data", true);
         startActivityForResult(intent, 100);
     }
+
+    // visit the local pictures
     @SuppressLint("SdCardPath")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
