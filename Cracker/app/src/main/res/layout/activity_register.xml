@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F5F7"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include layout="@layout/app_toolbar"/>
+
+
+    <EditText
+        android:id="@+id/id_et_username"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="4dp"
+        android:background="#ffffff"
+        android:inputType="text"
+        android:hint="username"
+        android:paddingLeft="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/colortext"
+        android:textColorHint="@color/color999" />
+
+    <EditText
+        android:id="@+id/id_et_password"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="4dp"
+        android:background="#ffffff"
+        android:textSize="16sp"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:paddingLeft="8dp"
+        android:textColor="@color/colortext"
+        android:textColorHint="@color/color999"  />
+
+
+
+
+    <Button
+        android:id="@+id/id_btn_register"
+        android:layout_width="match_parent"
+        android:background="@drawable/ic_phone_reg_bg"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="50dp" />
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_person"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+    android:orientation="vertical"
+        android:layout_height="wrap_content"
+    android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:text="My courses"/>
+        <TextView
+            android:layout_marginTop="3dp"
+            android:id="@+id/tv_content"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:text="My courses"/>
+
+</LinearLayout>
+

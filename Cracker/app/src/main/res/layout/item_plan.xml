@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="@dimen/padding_16"
+            android:layout_marginLeft="@dimen/padding_16"
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="11111111"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="#333"
+            />
+
+        <TextView
+            android:layout_below="@id/tv_title"
+            android:layout_marginLeft="@dimen/padding_16"
+            android:id="@+id/tv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="11111111"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#333"
+             />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padding_16"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#333"
+            />
+        <ImageView
+            android:layout_below="@id/tv_detail"
+            android:layout_marginTop="@dimen/padding_16"
+            android:layout_width="match_parent"
+            android:layout_height="0.5px"
+            android:background="#ebebed"
+            android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
