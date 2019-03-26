@@ -11,7 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
+/**
+ * initalize the application
+ */
 public class BaseActivity extends AppCompatActivity {
 
 
@@ -26,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               finish();
+                finish();
             }
         });
         TextView mTitle = (TextView) toolbar.findViewById(R.id.at_title);
@@ -37,8 +39,10 @@ public class BaseActivity extends AppCompatActivity {
     public void onToast(int res) {
         onToast(getResources().getString(res));
     }
+
+
     public void onToast(String msg) {
-        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

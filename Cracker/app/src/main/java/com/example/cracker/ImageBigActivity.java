@@ -23,17 +23,25 @@ import java.io.IOException;
 
 import cn.bmob.v3.BmobUser;
 
-
+/**
+ * class for images
+ * */
 public class ImageBigActivity extends BaseActivity {
     PhotoView iv;
+
+    /**
+     * initialize the view for the images
+     * */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_bigimage);
         onSetTitle("Data");
         iv =(PhotoView) findViewById(R.id.photo_view);
         String url = getIntent().getStringExtra("url");
         Glide.with(this).load(url).into(iv);
+
         iv.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -60,7 +68,14 @@ public class ImageBigActivity extends BaseActivity {
             }
         });
 
+
+
     }
+
+    /**
+     * download the image
+     * */
+
     public void saveMyBitmap(Context context, Bitmap bitmap) {
         String sdCardDir = Environment.getExternalStorageDirectory() + "/DCIM/";
         File appDir = new File(sdCardDir, "course");
@@ -86,5 +101,6 @@ public class ImageBigActivity extends BaseActivity {
         sendBroadcast(intent);
         Toast.makeText(this,"Save successfully",Toast.LENGTH_SHORT).show();
     }
+
 
 }

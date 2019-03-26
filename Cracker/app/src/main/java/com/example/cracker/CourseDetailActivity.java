@@ -49,6 +49,9 @@ public class CourseDetailActivity extends BaseActivity {
     private DataAdapter adapter;
     private Course data;
 
+    /**
+     *  initialize the class
+     *  */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,10 @@ public class CourseDetailActivity extends BaseActivity {
     }
 
 
+
+    /***
+     * initialize the view of course detail page
+     */
     private void initView() {
         swiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -93,6 +100,9 @@ public class CourseDetailActivity extends BaseActivity {
             }
         }
     }
+
+
+
     // get all the course material
     private void getDataList() {
         BmobQuery<Data> query = new BmobQuery<>();
@@ -115,7 +125,9 @@ public class CourseDetailActivity extends BaseActivity {
         });
     }
 
-
+    /**
+     * Controll the button click
+     * */
     @OnClick({R.id.tv_right, R.id.fab_edit})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -175,7 +187,7 @@ public class CourseDetailActivity extends BaseActivity {
                 }
                 break;
             case R.id.fab_edit:
-                // upload course matrial
+                // x course matrial
                 // if user did not login, will remind user to login first
                 User person2 = BmobUser.getCurrentUser(User.class);
                 if (person2 == null) {
@@ -195,6 +207,7 @@ public class CourseDetailActivity extends BaseActivity {
                 break;
         }
     }
+
     // remove the course from fav list
     private void cancel() {
         User person = BmobUser.getCurrentUser(User.class);
@@ -219,6 +232,9 @@ public class CourseDetailActivity extends BaseActivity {
             }
         });
     }
+
+
+
     // check if the course is in favorite list
     private boolean iscoll(String id) {
         boolean flag = false;

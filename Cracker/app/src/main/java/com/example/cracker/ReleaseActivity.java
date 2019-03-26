@@ -88,6 +88,7 @@ public class ReleaseActivity extends BaseActivity {
                 }
                 if (!fileSuccess){
                     onToast("Please upload an image");
+                    return;
                 }
 
 
@@ -121,6 +122,7 @@ public class ReleaseActivity extends BaseActivity {
         intent.setType("image/*");
         intent.putExtra("return-data", true);
         startActivityForResult(intent, 100);
+
     }
 
     // visit the local pictures

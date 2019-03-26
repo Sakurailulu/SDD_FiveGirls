@@ -20,14 +20,16 @@ import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalendarActivity extends BaseActivity implements CalendarView.OnYearChangeListener, CalendarView.OnCalendarSelectListener {
 
     TextView mTextMonthDay;
 
     TextView mTextYear;
-
+    Map<String, Calendar> schemedate = new HashMap<>();
 
     TextView mTextCurrentDay;
     private int mYear;
@@ -39,6 +41,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
     private List<Note> list = new ArrayList<>();
     private NoteListAdapter mAdapter;
     private ImageView iv_back;
+    private Map<String, Calendar> map = new HashMap<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,15 +51,16 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
     }
 
     private void initView() {
-        iv_back = (ImageView)findViewById(R.id.iv_back);
+
+        iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        mTextMonthDay = (TextView)findViewById(R.id.tv_month_day);
-        mTextYear = (TextView)  findViewById(R.id.tv_year);
+        mTextMonthDay = (TextView) findViewById(R.id.tv_month_day);
+        mTextYear = (TextView) findViewById(R.id.tv_year);
         mRelativeTool = (RelativeLayout) findViewById(R.id.rl_tool);
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
         mTextCurrentDay = (TextView) findViewById(R.id.tv_current_day);
@@ -70,6 +74,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
                 mCalendarView.showYearSelectLayout(mYear);
                 mTextYear.setVisibility(View.GONE);
                 mTextMonthDay.setText(String.valueOf(mYear));
+                getreminder();
             }
         });
         findViewById(R.id.fl_current).setOnClickListener(new View.OnClickListener() {
@@ -91,11 +96,12 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
             @Override
             public void onCalendarLongClick(Calendar calendar) {
                 Intent intent = new Intent();
-                intent.putExtra("year",calendar.getYear()+"" );
-                intent.putExtra("month",calendar.getMonth() +"");
-                intent.putExtra("day",calendar.getDay() +"");
-                intent.setClass(CalendarActivity.this,AddNoteActivity.class);
+                intent.putExtra("year", calendar.getYear() + "");
+                intent.putExtra("month", calendar.getMonth() + "");
+                intent.putExtra("day", calendar.getDay() + "");
+                intent.setClass(CalendarActivity.this, AddNoteActivity.class);
                 startActivity(intent);
+
             }
         });
         mTextYear.setText(String.valueOf(mCalendarView.getCurYear()));
@@ -106,6 +112,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new NoteListAdapter(this, list);
         mRecyclerView.setAdapter(mAdapter);
+        getreminder();
         mAdapter.setOnItemClickListener(new NoteListAdapter.ItemClickListener() {
             @Override
             public void setOnItemClickListener(int position) {
@@ -118,6 +125,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
             }
         });
     }
+
     private void showDel(final int position) {
         new AlertDialog.Builder(this)
                 .setTitle("Tips")
@@ -138,9 +146,12 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
 
         }).create().show();
     }
+
     private void del(int position) {
-        DBDao.getInstance(this).del(list.get(position).getId()+"");
+        DBDao.getInstance(this).del(list.get(position).getId() + "");
         list.remove(position);
+        map.clear();
+        getreminder();
         mAdapter.notifyDataSetChanged();
     }
 
@@ -157,12 +168,35 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnYea
     @Override
     public void onCalendarSelect(Calendar calendar, boolean isClick) {
         mTextYear.setVisibility(View.VISIBLE);
-        mTextMonthDay.setText(calendar.getMonth() + "-" + calendar.getDay() );
+        mTextMonthDay.setText(calendar.getMonth() + "-" + calendar.getDay());
         mTextYear.setText(String.valueOf(calendar.getYear()));
         mYear = calendar.getYear();
         list.clear();
         List<Note> dataList = DBDao.getInstance(this).loadNoteByTime(calendar.getYear() + "-" + calendar.getMonth() + "-" + calendar.getDay());
         list.addAll(dataList);
         mAdapter.notifyDataSetChanged();
+    }
+
+    private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
+        Calendar calendar = new Calendar();
+        calendar.setYear(year);
+        calendar.setMonth(month);
+        calendar.setDay(day);
+        calendar.setSchemeColor(color);//如果单独标记颜色、则会使用这个颜色
+        calendar.setScheme(text);
+        return calendar;
+    }
+
+    private void getreminder() {
+        for (int j = 1; j <= 12; j++) {
+            for (int i = 1; i <= 31; i++) {
+                List<Note> dataList = DBDao.getInstance(this).loadNoteByTime(mYear + "-" + j + "-" + i);
+                if (dataList.size() > 0) {
+                    map.put(getSchemeCalendar(this.mYear, j, i, 0xFF13acf0, "reminder").toString(), getSchemeCalendar(this.mYear, j, i, 0xFF13acf0, "reminder"));
+                }
+            }
+        }
+        mCalendarView.setSchemeDate(map);
+
     }
 }

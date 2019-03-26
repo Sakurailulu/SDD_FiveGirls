@@ -6,12 +6,15 @@ import android.content.Context;
 import cn.bmob.v3.Bmob;
 
 
-
+/**
+ * Entity for application
+ * */
 public class App extends Application {
 
     private static Context mContext;
 
     @Override
+    //
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
