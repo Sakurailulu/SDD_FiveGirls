@@ -67,7 +67,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void done(BmobUser bmobUser, BmobException e) {
                         if (e == null) {
-                            Toast.makeText(context, "login successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "login successfully", Toast.LENGTH_SHORT).show();
                             finish();
 
                         } else {

@@ -4,6 +4,7 @@ import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,6 +60,11 @@ public class MycollActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        BmobUser user = BmobUser.getCurrentUser();
+        if (user==null) {
+            onToast("Please login first");
+            return;
+        }
         getList();
     }
 
@@ -67,7 +73,6 @@ public class MycollActivity extends BaseActivity {
         query.order("-createdAt");
         String coll = BmobUser.getCurrentUser(User.class).getColl();
         if (TextUtils.isEmpty(coll)) {
-
             return;
         }
         String[] colls = coll.split(",,,");
