@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="registered"
+                    android:text="register"
                     android:textColor="@color/white" />
             </RelativeLayout>
     </LinearLayout>

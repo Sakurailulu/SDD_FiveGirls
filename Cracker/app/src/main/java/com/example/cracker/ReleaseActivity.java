@@ -143,6 +143,9 @@ public class ReleaseActivity extends BaseActivity {
                             } catch (FileNotFoundException e) {
                                 onToast("Cannot Find File");
                                 e.printStackTrace();
+                            } catch (Exception e) {
+                                onToast("Permission Denied");
+                                e.printStackTrace();
                             }
                         }
                     }

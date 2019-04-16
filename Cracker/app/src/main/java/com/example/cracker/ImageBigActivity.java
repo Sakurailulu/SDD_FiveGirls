@@ -93,7 +93,8 @@ public class ImageBigActivity extends BaseActivity {
             Toast.makeText(this,"Cannot Find File",Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(this,"Permission denied",Toast.LENGTH_SHORT).show();
+            return;
         }
         Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         Uri uri = Uri.fromFile(file);

@@ -1,0 +1,13 @@
+//
+
+
+Feature we may want to add:
+administer system
+
+To prevent users to upload the wrong schedule and misleading other users, the certain user can log in as administer. Administerneedsd to check the accuracy by challenge system.Administors can edit or delete wrong schedule or other course materials uploaded by other users.
+
+
+Challenge system:
+If students find out the course materials uploaded is not correct, they can challenge the materials. If a certain percentage of the users has challenged this material, administer can remove it .
+
+
