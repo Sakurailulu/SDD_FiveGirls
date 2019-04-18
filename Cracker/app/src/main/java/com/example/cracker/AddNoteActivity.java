@@ -1,6 +1,5 @@
 package com.example.cracker;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.cracker.bean.Note;
 import com.example.cracker.utils.DBDao;
-
 
 public class AddNoteActivity extends BaseActivity  {
     EditText mEtTitle;
@@ -30,7 +28,6 @@ public class AddNoteActivity extends BaseActivity  {
         initView();
         onSetTitle("calendar");
     }
-
 
     private void initView() {
         mEtTitle = findViewById(R.id.et_title);
@@ -56,8 +53,5 @@ public class AddNoteActivity extends BaseActivity  {
             }
         });
     }
-
-
-
 
 }
