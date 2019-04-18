@@ -99,6 +99,4 @@ public class ImageBigActivity extends BaseActivity {
         sendBroadcast(intent);
         Toast.makeText(this,"Save successfully",Toast.LENGTH_SHORT).show();
     }
-
-
 }
