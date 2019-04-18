@@ -16,7 +16,7 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-
+//this is a class for login event, this class is a subclass of BaseActivity
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private EditText etName;
     private EditText etPwd;
