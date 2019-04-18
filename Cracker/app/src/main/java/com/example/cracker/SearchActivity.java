@@ -91,7 +91,7 @@ public class SearchActivity extends BaseActivity {
                 if (e == null) {
                     list.clear();
                     for (Course tr : exhibitsList) {
-                        if (tr.getName().contains(content)) {
+                        if (tr.getName().toLowerCase().contains(content.toLowerCase())) {
                             list.add(tr);
                         }
                     }
