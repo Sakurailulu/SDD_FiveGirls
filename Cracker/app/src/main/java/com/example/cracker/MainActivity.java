@@ -15,9 +15,7 @@ import com.example.cracker.fragment.SettingFragment;
 
 // MainActivity controls action in main view
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-
-
-
+    
     private MainActivity context;
     private HomeFragment homeFragment;
     private SettingFragment settingFragment;
