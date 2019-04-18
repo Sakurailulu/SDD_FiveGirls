@@ -27,7 +27,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-
+//this class is design for search the class event
+// And this class is a subclass of BaseActivity
 public class SearchActivity extends BaseActivity {
 
 
