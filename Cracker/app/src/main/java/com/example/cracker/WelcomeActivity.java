@@ -12,6 +12,8 @@ import java.io.File;
 
 import cn.bmob.v3.BmobUser;
 
+// show the welcome picture when entering the applicaiton
+
 public class WelcomeActivity extends AppCompatActivity {
 
     private ImageView iv_guide;
