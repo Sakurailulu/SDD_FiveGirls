@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// handle the basic calendar features
+
 public class CalendarActivity extends BaseActivity implements CalendarView.OnYearChangeListener, CalendarView.OnCalendarSelectListener {
 
     TextView mTextMonthDay;
